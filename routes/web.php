@@ -35,7 +35,7 @@ Route::group(["prefix" => "admin", "namespace" => "backend"], function(){
 // *******************************************************************************************
 
 // home page route.
-Route::get('/', 'frontend/HomeController@index');
+Route::get('/', 'frontend\HomeController@index');
 // authenticated routes.
 Auth::routes();
 
@@ -52,7 +52,7 @@ Route::group(["namespace" => "frontend"], function(){
     Route::post('/update/password', 'LoginController@reset');
 
     // authenticated routes.
-    Route::group(['middleware' => ['user']], function () {
+    Route::group(['middleware' => ['auth']], function () {
     	Route::get('/test', 'HomeController@test');
     });
 });
