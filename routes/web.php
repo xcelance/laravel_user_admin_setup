@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // all admin routes.
 // *******************************************************************************************
 
-Route::group(["prefix" => "admin", "namespace" => "backend"], function(){
+Route::group(["prefix" => "admin", "namespace" => "backend"], function() {
 	// admin login routes.
     Route::get('/login', 'LoginController@index');
     Route::post('/login', 'LoginController@login');
@@ -27,6 +27,15 @@ Route::group(["prefix" => "admin", "namespace" => "backend"], function(){
     // admin authenticated routes routes.
     Route::group(['middleware' => ['admin']], function () {
     	Route::get('/', 'AdminController@index');
+        Route::prefix('users')->group(function () {
+            Route::get('/', 'AdminController@listUsers');
+            Route::get('/add', 'AdminController@getUser');
+            Route::post('/add', 'AdminController@addUser');
+            Route::get('/edit/{id}', 'AdminController@editUser');
+            Route::post('/update', 'AdminController@updateUser');
+
+            Route::get('/delete/{id}', 'AdminController@deleteUser');
+        });
     });
 });
 
@@ -39,7 +48,7 @@ Route::get('/', 'frontend\HomeController@index');
 // authenticated routes.
 Auth::routes();
 
-Route::group(["namespace" => "frontend"], function(){
+Route::group(["namespace" => "frontend"], function() {
 	// user login and register routes.
     Route::post('/user/login', 'LoginController@login');
     Route::post('/user/register', 'LoginController@register');

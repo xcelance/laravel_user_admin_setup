@@ -4,12 +4,12 @@
 			<div class="row no-gutters align-items-center">
 				<div class="icons-marg-right">
 					<div class="back-icon red-icon">
-						<i class="fab fa-soundcloud fa-3x text-white"></i>
+						<i class="fa fa-user-secret fa-3x text-white"></i>
 					</div>
 				</div>
 				<div class="col-auto icons-cutoms">
-					<h3 class="font-weight-normal">345</h3>
-					<div class="h5 mb-0 font-weight-bold text-gray-800">data</div>
+					<h3 class="font-weight-normal">{{ $admin_ct }}</h3>
+					<div class="h5 mb-0 font-weight-bold text-gray-800">Admins</div>
 				</div>
 			</div>
 		</div>
@@ -22,11 +22,11 @@
 			<div class="row no-gutters align-items-center">
 				<div class="icons-marg-right">
 					<div class="back-icon yellow-icon">
-						<i class="fas fa-user fa-3x text-white"></i>
+						<i class="fas fa-users fa-3x text-white"></i>
 					</div>
 				</div>
 				<div class="col-auto icons-cutoms">
-					<h3 class="font-weight-normal">343</h3>
+					<h3 class="font-weight-normal">{{ $user_ct }}</h3>
 					<div class="h5 mb-0 font-weight-bold text-gray-800">Users</div>
 				</div>
 			</div>

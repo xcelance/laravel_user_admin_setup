@@ -10,10 +10,14 @@
 	</div>
 	<div class="user-icon-outer">
 		<div class="img-user">
-			<img src="{{ url('public/assets/images/avtar.png') }}">
+			@if(Auth::user()->profile)
+				<img src="{{ url(Auth::user()->profile) }}" class="profile-pictur">
+			@else 
+				<img src="{{ url('public/assets/images/avtar.png') }}" class="profile-pictur">
+			@endif
 		</div>
-		<h3>Test</h3>
-		<p>dfsdfsd</p>
+		<h3>{{ ucwords(Auth::user()->name) }}</h3>
+		<p>{{ ucwords(Auth::user()->type) }}</p>
 	</div>
 	
 	<!-- Nav Item - Dashboard -->

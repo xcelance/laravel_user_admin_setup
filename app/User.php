@@ -36,4 +36,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Upload profile image.
+     *
+     * @var array
+     */
+    public static function uploadProfile($file) {
+        $name = time().'.'.$file->getClientOriginalExtension();
+        $path = public_path('/profile');
+        $req = "public/profile";
+        $file->move($path, $name);
+        return $req."/".$name;
+    }
 }

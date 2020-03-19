@@ -349,3 +349,8 @@ ul.navbar-nav.ml-auto {
     font-size: 60px;
     color: rgba(50, 177, 241, 0.72);
 }
+img.profile-pictur {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+}

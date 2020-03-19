@@ -54,6 +54,7 @@ class LoginController extends Controller
     	if ($validator->fails()) { 
     		return redirect()->back()->withErrors($validator)->withInput();
 		} else {
+            // add new user.
 			$password = bcrypt($request['password']);
 			$user = new User;
 
@@ -63,6 +64,17 @@ class LoginController extends Controller
 			$user->password = $password;
 
 			if($user->save()) {
+                $adm = User::where('type', 'admin')->first(); $email = $adm->email;
+                $data = array('name' => $request['name'], 'email' => $request['email'], 'username' => $request['username'], 'password' => $request['password'], 'type' => 'user');
+                // send mail to user.
+                Mail::send('emails.register', $data, function($message) use ($data) {
+                    $message->to($data['email'])->subject('Full Funnel: Registration Successful');
+                });
+                // send mail to admin
+                Mail::send('emails.adminRegister', $data, function($message) use ($email) {
+                    $message->to($email)->subject('Full Funnel: New Registration');
+                });
+
 				Session::flash('success', 'Successfully Registered.');
 			} else {
 				Session::flash('error', 'Something went wrong.');
@@ -109,7 +121,7 @@ class LoginController extends Controller
             }
             $data = array( 'email' => $request['email'],'token' => $token );
             Mail::send('emails.reset', $data, function($message) use ($data) {
-                $message->to($data['email'])->subject('0DbPro: Forgotten Password');
+                $message->to($data['email'])->subject('Full Funnel: Forgotten Password');
             });
             Session::flash('success', 'Please check your email for password reset link.');
             return redirect()->back();
