@@ -27,5 +27,5 @@
 
 @endsection
 
-@section('js')
-@endsection
+@push('js')
+@endpush

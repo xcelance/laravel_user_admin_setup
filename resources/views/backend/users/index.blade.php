@@ -42,7 +42,7 @@
 
 @endsection
 
-@section('js')
+@push('js')
 	<script type="text/javascript">
 		// add datatable js to table.
 		jQuery('#data_table').DataTable({
@@ -59,4 +59,4 @@
 		    }
 		});
 	</script>
-@endsection
+@endpush

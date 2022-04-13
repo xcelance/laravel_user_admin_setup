@@ -106,7 +106,7 @@
 
 @endsection
 
-@section('js')
+@push('js')
 
 	<script type="text/javascript">
 		//change profile image.
@@ -122,4 +122,4 @@
 		});
 	</script>
 
-@endsection
+@endpush

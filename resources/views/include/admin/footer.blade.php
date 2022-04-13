@@ -24,4 +24,4 @@
 
 
 @include('include.admin.scripts')
-@yield('js')
+@stack('js')

@@ -1,3 +1,3 @@
 
 @include('include.scripts')
-@yield('js')
+@stack('js')
